@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.search {
+    width: 100% !important;
+}
+
+.fa-plus-circle,
+.fa-arrow-left {
+    color: #ccc;
+}
+
+.cards {
+    margin-top: 100px;
+}
+
+.cards .row .col-3 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    max-width: 350px;
+}
+
+.card-header>h1 {
+    font-size: 1.4rem;
+}
+
+.icons {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+
+.icons .fas {
+    margin-right: 10px;
+}
+
+.icons .fas:first-child {
+    color: rgb(93, 127, 230);
+}
+
+.icons .fas:last-child {
+    color: rgba(185, 48, 48, 0.863);
+}
+
+.mt-6personalized {
+    margin-top: 5rem;
+}
+
+.error {
+    border-color: red !important;
+}

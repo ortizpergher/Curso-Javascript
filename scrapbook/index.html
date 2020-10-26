@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrapbook</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/all.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="list">
+        <header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar fixed-top navbar-dark bg-dark">
+                            <div class="col-6 offset-3">
+                                <form class="form-inline">
+                                    <input class="form-control text-sm-center search" type="search" placeholder="Pesquisar..." onkeyup="pesquisar(event)" aria-label="search">
+                                </form>
+                            </div>
+                            <div class="">
+                                <a class="" href="#">
+                                    <span class="fas fa-plus-circle fa-3x" onclick="trocarTela(event)" id="iconNew"></span>
+                                </a>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-8 offset-2 mt-6personalized">
+                        <p class="lead text-center noCards">
+                            Nenhum item cadastrado até o momento.
+                        </p>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="row cards-row">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="register d-none">
+        <header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="navbar fixed-top navbar-dark bg-dark">
+                            <a class="" href="#">
+                                <span class="fas fa-arrow-left fa-3x" id="iconNew" onclick="trocarTela(event)"></span>
+                            </a>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-10 offset-1">
+                        <form class="register-form mt-6personalized">
+                            <div class="alert alert-danger d-none">
+                                Preencha todos os campos corretamente.
+                            </div>
+                            <div class="alert alert-success d-none" role="alert">
+                                Cadastro efetuado com sucesso.
+                            </div>
+                            <div class="form-group">
+                                <label for="titulo">Título</label>
+                                <input type="text" class="form-control" id="titulo" placeholder="Digite o Título" aria-describedby="titleHelp">
+                                <small id="titleHelp" class="form-text text-muted">Máximo 20 caracteres</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="texto">Texto</label>
+                                <textarea class="form-control" id="texto" placeholder="Digite o texto..." rows="5"></textarea>
+                            </div>
+                            <button type="button" class="btn-primary float-right" onclick="salvar(event)">Salvar</button>
+                            <button type="button" class="btn-success float-right d-none" onclick="clearForm()">Novo Registro</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
