@@ -136,19 +136,16 @@ function editCard() {
 }
 
 function pesquisar(e){
-    //e.preventDefault();
 
     const cards = document.getElementsByClassName('card');
 
     for (card of cards) {
 
-        if (!card.getElementsByClassName('card-header')[0].getElementsByTagName('h1')[0].innerText.toUpperCase().includes(e.target.value.toUpperCase())) {
-            card.parentNode.classList.add('d-none')
-        } else {
-            card.parentNode.classList.remove('d-none')
-        };
-        
-        if (!card.getElementsByClassName('card-body')[0].getElementsByTagName('p')[0].innerText.toUpperCase().includes(e.target.value.toUpperCase())) {
+        let tituloCard = card.getElementsByClassName('card-header')[0].getElementsByTagName('h1')[0].innerText;
+        let textoCard = card.getElementsByClassName('card-body')[0].getElementsByTagName('p')[0].innerText;
+        let textoPesquisa = e.target.value;
+
+        if (!tituloCard.toUpperCase().includes(textoPesquisa.toUpperCase()) && !textoCard.toUpperCase().includes(textoPesquisa.toUpperCase())) {
             card.parentNode.classList.add('d-none')
         } else {
             card.parentNode.classList.remove('d-none')
