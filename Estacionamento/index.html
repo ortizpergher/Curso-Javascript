@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semana 10</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand col-6 offset-3 h1">Controle de estacionamento</span>
+    </nav>
+</header>
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 bg-secondary p-3 text-white">
+                <form class="validar">
+                    <div class="alert alert-danger d-none">
+                        Preencha todos os campos corretamente.
+                    </div>
+                    <div class="alert alert-success d-none" role="alert">
+                        Processo efetuado com sucesso.
+                    </div>
+                    <div class="form-group row">
+                        <label for="placa" class="col-sm-2 col-form-label">Placa</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="placa">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cor" class="col-sm-2 col-form-label">Cor</label>
+                        <div class="col-sm-10">
+                            <select class="custom-select" id="cor">
+                                <option selected disabled value="">Escolha...</option>
+                                <option value="branca">Branca</option>
+                                <option value="preta">Preta</option>
+                                <option value="prata">Prata</option>
+                                <option value="azul">Azul</option>
+                                <option value="vermelha">Vermelha</option>
+                                <option value="amarela">Amarela</option>
+                                <option value="verde">Verde</option>
+                                <option value="laranja">Laranja</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="modelo" class="col-sm-2 col-form-label">Modelo</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="modelo">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ano" class="col-sm-2 col-form-label">Ano</label>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control" id="ano">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary float-right" onclick="entrada(event)" type="submit">Entrada</button>
+                </form>                  
+            </div>
+            <div class="col-6 bg-dark pt-4 text-white">
+                <form class="validar">
+                    <div class="alert alert-danger d-none">
+                        Preencha todos os campos corretamente.
+                    </div>
+                    <div class="alert alert-success d-none" role="alert">
+                        Processo efetuado com sucesso.
+                    </div>
+                    <div class="form-group row">
+                        <label for="placaSaida" class="col-sm-2 col-form-label">Placa</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" id="placaSaida">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="tempo" class="col-sm-2 col-form-label">Tempo</label>
+                        <div class="col-sm-10">
+                          <input type="number" class="form-control" id="tempo">
+                        </div>
+                    </div>
+                    <button class="btn btn-warning float-right" onclick="saida(event)" type="submit">Saída</button>
+                </form>                  
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 bg-info overflow-auto log">
+                <p>Log de ações</p>
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="col-10 offset-1">
+                <h2>Vagas</h2>
+                <div class="row">
+                    <div class="card col-3">
+                        <div class="card-header text-center">A1</div>
+                        <div class="card-body a1">
+                            <p class="card-text text-center vazia">Vazia</p>
+                        </div>
+                    </div>
+                    <div class="card col-3">
+                        <div class="card-header text-center">A2</div>
+                        <div class="card-body a2">
+                            <p class="card-text text-center vazia">Vazia</p>
+                        </div>
+                    </div>
+                    <div class="card col-3">
+                        <div class="card-header text-center">B1</div>
+                        <div class="card-body b1">
+                            <p class="card-text text-center vazia">Vazia</p>
+                        </div>
+                    </div>
+                    <div class="card col-3">
+                        <div class="card-header text-center">B2</div>
+                        <div class="card-body b2">
+                            <p class="card-text text-center vazia">Vazia</p>
+                        </div>
+                    </div>
+                    <div class="card col-3">
+                        <div class="card-header text-center">C1</div>
+                        <div class="card-body c1">
+                            <p class="card-text text-center vazia">Vazia</p>
+                        </div>
+                    </div>
+                    <div class="card col-3">
+                        <div class="card-header text-center">C2</div>
+                        <div class="card-body c2">
+                            <p class="card-text text-center vazia">Vazia</p>
+                        </div>
+                    </div>
+                    <div class="card col-3">
+                        <div class="card-header text-center">D1</div>
+                        <div class="card-body d1">
+                            <p class="card-text text-center vazia">Vazia</p>
+                        </div>
+                    </div>
+                    <div class="card col-3">
+                        <div class="card-header text-center">D2</div>
+                        <div class="card-body d2">
+                            <p class="card-text text-center vazia">Vazia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 bg-info">
+                <p class="text-center m-3">
+                    O carro X é o mais gastador
+                </p>
+            </div>
+        </div>
+    </div>
+</main>
+    
+    <script src="./js/script.js"></script>
+</body>
+</html>

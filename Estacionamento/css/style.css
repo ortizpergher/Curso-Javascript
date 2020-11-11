@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cards {
+    margin-top: 100px;
+}
+
+.cards .row .col-3 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card {
+    max-width: 350px;
+}
+
+.card-header>h1 {
+    font-size: 1.4rem;
+}
+
+.icons {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+
+.icons .fas {
+    margin-right: 10px;
+}
+
+.icons .fas:first-child {
+    color: rgb(93, 127, 230);
+}
+
+.icons .fas:last-child {
+    color: rgba(185, 48, 48, 0.863);
+}
+
+.error {
+    border-color: red !important;
+}
+
+.log {
+    height: 150px;
+}
