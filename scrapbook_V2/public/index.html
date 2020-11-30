@@ -19,12 +19,12 @@
                         <nav class="navbar fixed-top navbar-dark bg-dark">
                             <div class="col-6 offset-3">
                                 <form class="form-inline">
-                                    <input class="form-control text-sm-center search" type="search" placeholder="Pesquisar..." onkeyup="pesquisar(event)" aria-label="search">
+                                    <input class="form-control text-sm-center search" type="search" placeholder="Pesquisar..." aria-label="search">
                                 </form>
                             </div>
                             <div class="">
                                 <a class="" href="#">
-                                    <span class="fas fa-plus-circle fa-3x" onclick="trocarTela(event)" id="iconNew"></span>
+                                    <span class="fas fa-plus-circle fa-3x" id="iconNew"></span>
                                 </a>
                             </div>
                         </nav>
@@ -55,7 +55,7 @@
                     <div class="col-12">
                         <nav class="navbar fixed-top navbar-dark bg-dark">
                             <a class="" href="#">
-                                <span class="fas fa-arrow-left fa-3x" id="iconNew" onclick="trocarTela(event)"></span>
+                                <span class="fas fa-arrow-left fa-3x" id="iconLeft"></span>
                             </a>
                         </nav>
                     </div>
@@ -82,15 +82,14 @@
                                 <label for="texto">Texto</label>
                                 <textarea class="form-control" id="texto" placeholder="Digite o texto..." rows="5"></textarea>
                             </div>
-                            <button type="button" class="btn-primary float-right" onclick="salvar(event)">Salvar</button>
-                            <button type="button" class="btn-success float-right d-none" onclick="clearForm()">Novo Registro</button>
+                            <button type="button" class="btn-primary float-right" id="btnAddCard">Salvar</button>
                         </form>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-    <script src="./js/script.js"></script>
+    <script src="./bundle.js"></script>
 </body>
 
 </html>
