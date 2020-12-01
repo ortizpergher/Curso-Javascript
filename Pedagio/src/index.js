@@ -41,3 +41,9 @@ logout.addEventListener('click', (event) => {
 
     login.logout();
 });
+
+var clock = document.getElementById('clock');
+
+setInterval(function() {
+    clock.innerText = ((new Date).toLocaleString().substr(11, 9));
+}, 1000);
