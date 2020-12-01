@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedagio</title>
+    <link rel="stylesheet" href="./css/style.css">    
+    <link rel="stylesheet" href="./css/bootstrap.min.css">    
+    <script src="https://kit.fontawesome.com/cdd174cdc7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="login">
+        <form class="login" action="#" method="post">
+            <div>
+                <input type="email" name="user" id="user" placeholder="Digite seu e-mail">
+                <span class="fas fa-envelope icon"></span>
+            </div>
+            <div>
+                <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
+                <span class="fas fa-eye-slash icon" id="iconSenha"></span>
+            </div>
+            <input class="button btnLogin" type="submit" value="ENTRAR">
+        </form>
+    </div>
+    <div id="pagina">
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">Pedagio RS</a>
+                </li>
+                <li class="avatar">
+                    <a href="#"><img src="./img/avatar.png" /></a>
+                    <ul>
+                        <li>
+                            <a href="#" class="logout">Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <form class="mt-5">
+                <div class="form-group row">
+                    <label for="placa" class="col-sm-2 col-form-label col-form-label-lg">Placa</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-lg" id="placa" placeholder="Placa">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="categoria" class="col-sm-2 col-form-label col-form-label-lg">Categoria do veículo</label>
+                    <div class="col-sm-10">
+                        <select class="form-control form-control-lg" id="categoria">
+                            <option value="1">Carro</option>
+                            <option value="2">Dois eixos</option>
+                            <option value="3">Três eixos</option>
+                            <option value="4">Quatro eixos</option>
+                            <option value="5">Cinco ou mais eixos</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="hora" class="col-sm-2 col-form-label col-form-label-lg">Hora</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="hora" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="valor" class="col-sm-2 col-form-label col-form-label-lg">Valor a pagar R$</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-lg" id="valor" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="valorRecebido" class="col-sm-2 col-form-label col-form-label-lg">Valor recebido R$</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-lg" id="valorRecebido" placeholder="Valor recebido">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="troco" class="col-sm-2 col-form-label col-form-label-lg">Troco R$</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-lg" id="troco" readonly>
+                    </div>
+                </div>
+              </form>
+        </main>
+        <footer>
+            <p>copyright @ 2020</p>
+        </footer>
+    </div>
+    <script src="./bundle.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.js"></script>
+</body>
+
+</html>
