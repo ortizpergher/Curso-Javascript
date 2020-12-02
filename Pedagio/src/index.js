@@ -1,4 +1,5 @@
 import Login from './classes/login';
+import ValorTicket from './classes/valorTicket';
 
 const btnPassword = document.getElementsByClassName('fa-eye-slash')[0];
 
@@ -42,8 +43,25 @@ logout.addEventListener('click', (event) => {
     login.logout();
 });
 
-var clock = document.getElementById('clock');
+const clock = document.getElementById('hour');
 
 setInterval(function() {
-    clock.innerText = ((new Date).toLocaleString().substr(11, 9));
+    let now = new Date();
+    clock.value = now.getDate() + '/' + (now.getMonth() + 1) + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() ;
 }, 1000);
+
+const categorias = document.getElementsByClassName('categoria')[0];
+
+categorias.addEventListener('change', event => {
+    event.preventDefault();
+
+    const valorTicket = new ValorTicket();
+
+    const valorPagar = document.getElementById('valor');
+
+    valorPagar.value = valorTicket.calcularValorTicket();
+
+})
+
+
+

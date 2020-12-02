@@ -4,91 +4,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pedagio</title>
-    <link rel="stylesheet" href="./css/style.css">    
-    <link rel="stylesheet" href="./css/bootstrap.min.css">    
+    <title>Pedágio RS</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/cdd174cdc7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div id="login">
-        <form class="login" action="#" method="post">
-            <div>
-                <input type="email" name="user" id="user" placeholder="Digite seu e-mail">
-                <span class="fas fa-envelope icon"></span>
+    <div class="container-fluid">
+        <div id="login">
+            <div class="d-flex h-100 justify-content-center align-items-center">
+                <form class="form-signin">
+                    <div class="form-label-group">
+                        <input type="email" name="user" id="user" class="form-control" placeholder="Endereço de e-mail"
+                            required autofocus>
+                        <span class="fas fa-envelope icon"></span>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="password" name="senha" id="senha" class="form-control" placeholder="Senha"
+                            required>
+                        <span class="fas fa-eye-slash icon" id="iconSenha"></span>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block btnLogin" type="submit">Entrar</button>
+                </form>
             </div>
-            <div>
-                <input type="password" name="senha" id="senha" placeholder="Digite sua senha">
-                <span class="fas fa-eye-slash icon" id="iconSenha"></span>
-            </div>
-            <input class="button btnLogin" type="submit" value="ENTRAR">
-        </form>
-    </div>
-    <div id="pagina">
-        <nav>
-            <ul>
-                <li>
-                    <a href="#">Pedagio RS</a>
-                </li>
-                <li class="avatar">
+        </div>
+        <div id="pagina">
+            <nav class="navbar fixed-top navbar-dark bg-dark shadow-sm">
+                <a class="navbar-brand" href="#">Pedágio RS</a>
+                <span class="navbar-text mr-sm-2">
                     <a href="#"><img src="./img/avatar.png" /></a>
-                    <ul>
-                        <li>
-                            <a href="#" class="logout">Logout</a>
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link logout" href="#">Logout</a>
                         </li>
                     </ul>
-                </li>
-            </ul>
-        </nav>
-        <main>
-            <form class="mt-5">
-                <div class="form-group row">
-                    <label for="placa" class="col-sm-2 col-form-label col-form-label-lg">Placa</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-lg" id="placa" placeholder="Placa">
-                    </div>
+                </span>
+            </nav>
+            <main>
+                <div class="col-md-8 col-sm-12">
+                    <br><br><br><br><br>
+                    <h4 class="d-flex justify-content-center p-3">Registro</h4>
+                    <form class="">
+                        <div class="form-group row mb-4">
+                            <label for="placa" class="col-sm-3 col-form-label col-form-label-lg">Placa</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-lg" id="placa" placeholder="Placa" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label for="categoria" class="col-sm-3 col-form-label col-form-label-lg">Categoria do
+                                veículo</label>
+                            <div class="col-sm-9">
+                                <select class="form-control form-control-lg categoria" name="categoria" id="categoria" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="1">Carro</option>
+                                    <option value="2">Dois eixos</option>
+                                    <option value="3">Três eixos</option>
+                                    <option value="4">Quatro eixos</option>
+                                    <option value="5">Cinco ou mais eixos</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label for="hour" class="col-sm-3 col-form-label col-form-label-lg">Data e hora</label>
+                            <div class="col-sm-9" >
+                                <input type="text" class="form-control form-control-lg" id="hour" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label for="valor" class="col-sm-3 col-form-label col-form-label-lg">Valor a pagar R$</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-lg" id="valor" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label for="valorRecebido" class="col-sm-3 col-form-label col-form-label-lg">Valor recebido R$</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-lg" id="valorRecebido" placeholder="Valor recebido" required>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-4">
+                            <label for="troco" class="col-sm-3 col-form-label col-form-label-lg">Troco R$</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control form-control-lg" id="troco" readonly>
+                            </div>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Registrar</button>
+                    </form>
                 </div>
-                <div class="form-group row">
-                    <label for="categoria" class="col-sm-2 col-form-label col-form-label-lg">Categoria do veículo</label>
-                    <div class="col-sm-10">
-                        <select class="form-control form-control-lg" id="categoria">
-                            <option value="1">Carro</option>
-                            <option value="2">Dois eixos</option>
-                            <option value="3">Três eixos</option>
-                            <option value="4">Quatro eixos</option>
-                            <option value="5">Cinco ou mais eixos</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="hour" class="col-sm-2 col-form-label col-form-label-lg">Hora</label>
-                    <div class="col-sm-10 bg-white" id="clock">
-                        <input type="text" class="form-control" id="hour" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="valor" class="col-sm-2 col-form-label col-form-label-lg">Valor a pagar R$</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-lg" id="valor" readonly>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="valorRecebido" class="col-sm-2 col-form-label col-form-label-lg">Valor recebido R$</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-lg" id="valorRecebido" placeholder="Valor recebido">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="troco" class="col-sm-2 col-form-label col-form-label-lg">Troco R$</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-lg" id="troco" readonly>
-                    </div>
-                </div>
-              </form>
-        </main>
-        <footer>
-            <p>copyright @ 2020</p>
-        </footer>
+            </main>
+            <footer class="d-flex justify-content-center align-items-end">
+                <p>copyright @ 2020</p>
+            </footer>
+        </div>
     </div>
     <script src="./bundle.js"></script>
     <script src="./js/jquery.min.js"></script>
