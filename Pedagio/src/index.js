@@ -60,7 +60,6 @@ categorias.addEventListener('change', event => {
     const valorPagar = document.getElementById('valor');
 
     valorPagar.value = valorTicket.calcularValorTicket();
-
 })
 
 
