@@ -1,0 +1,31 @@
+# Para iniciar um projeto
+yarn init
+
+# Pacotes instalados:
+yarn add @babel/core
+yarn add @babel/cli
+yarn add @babel/preset-env
+yarn add @babel/plugin-proposal-object-rest-spread
+
+yarn add @babel/core -D
+yarn add @babel/cli -D
+yarn add @babel/preset-env -D
+yarn add @babel/plugin-proposal-object-rest-spread -D
+
+yarn add webpack webpack-cli -D
+yarn add webpack-dev-server -D
+
+yarn add babel-loader -D
+
+yarn add express
+
+yarn add nodemon -D
+yarn add sucrase -D
+
+
+# Executar
+yarn dev
+yarn watch
+
+
+
