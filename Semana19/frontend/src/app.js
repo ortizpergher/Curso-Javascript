@@ -88,7 +88,6 @@ export default class App {
                             <p class="m-2">Descrição: ${description}</p>`;
 
         document.querySelector('.details').innerHTML = details;
-
     }
 
     setPagination(totalItems, offset, name){
