@@ -11,6 +11,7 @@ yarn add @babel/core -D
 yarn add @babel/cli -D
 yarn add @babel/preset-env -D
 yarn add @babel/plugin-proposal-object-rest-spread -D
+yarn add @babel/plugin-transform-runtime -D
 
 yarn add webpack webpack-cli -D
 yarn add webpack-dev-server -D
@@ -18,10 +19,27 @@ yarn add webpack-dev-server -D
 yarn add babel-loader -D
 
 yarn add express
+yarn add cors
 
 yarn add nodemon -D
 yarn add sucrase -D
 
+yarn add eslint -D
+yarn eslint --init
+Após rodar o comando responder 
+    -> 3ª opção
+    -> 1ª opção: JavaScript modules...
+    -> 3ª opção:  none os these
+    -> no
+    -> desmarcar browser, marcar node
+    -> Use a popular style
+    -> airbnb ...
+    -> JavaScript
+    -> yes
+
+yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+
+yarn add axios
 
 # Executar
 yarn dev

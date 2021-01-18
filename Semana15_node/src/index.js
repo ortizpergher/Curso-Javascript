@@ -1,4 +1,6 @@
-import express, { response } from 'express';
+import express, { request, response } from 'express';
+
+import Pessoa from './classes/pessoa';
 
 const app = express();
 
@@ -103,6 +105,82 @@ app.get('/inverter-string/:valor', (request, response) => {
     const novoValor = valor.split('').reverse().join('');
     return response.send(novoValor);
 });
+
+// 5 - Criar uma rota chamada remover-vogais, essa rota deverá deverá ter uma query param chamada valor. 
+// Esse valor recebido deverá ser salvo em um array, e toda vez que a rota for chamada, deverá salvar o 
+// valor nesse mesmo array. Antes de salvar o valor/string no array, deverá ser removido todas as vogais, 
+// deixando apenas as consoantes na string. Sempre que a rota for chamada, deverá ser exibido em forma 
+// de json o array contendo todas as strings.
+
+const removerVogais = [];
+
+app.get('/remover-vogais/:valor', (request, response) => {
+
+    const { valor } = request.params;
+
+    const novaString = valor.replace(/[aeiouà-ú]/gi, '');
+    removerVogais.push(novaString);
+
+    return response.json(novaString);
+});
+
+app.get('/remover-vogais', (request, response) => {
+    return response.json(removerVogais);
+});
+
+const pessoas = [];
+const nomesInvertidos = [];
+
+app.get('/adicionar-pessoa', (request, response) => {
+
+    const { nome, idade } = request.query;
+
+    const pessoa = new Pessoa(nome, idade, pessoas.length + 1);
+
+    nomesInvertidos.push(pessoa.inverterNome(nome));
+    pessoas.push(pessoa);
+
+    return response.json(pessoa);
+});
+
+app.get('/exibir-pessoa/:id', (request, response) => {
+    const { id } = request.params;
+    const pessoa = pessoas.find(pessoa => pessoa.id === parseInt(id));
+
+    if (pessoa) {
+        return response.json(pessoa);
+    }
+
+    return response.status(404).json({
+        mensagem: 'Usuário não encontrado'
+    });
+});
+
+app.get('/exibir-pessoas', (request, response) => {
+    return response.json(pessoas);
+});
+
+app.get('/remover-pessoa/:id', (request, response) => {
+    const { id } = request.params;
+
+    const pessoa = pessoas.find(pessoa => pessoa.id === parseInt(id));
+
+    if (pessoa) {
+        pessoas.splice(pessoa, 1);
+        return response.status(200).json({
+            mensagem: 'Usuário deletado'
+        });        
+    } else {
+        return response.status(404).json({
+            mensagem: 'Usuário não encontrado'
+        });
+    }    
+});
+
+app.get('/inverter-nomes-pessoas', (request, response) => {
+    return response.json(nomesInvertidos);
+});
+
 
 
 app.listen(3333);
