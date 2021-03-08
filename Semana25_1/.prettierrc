@@ -1,0 +1,5 @@
+{
+    "singleQuote": true,
+    "trailCommma": "es5",
+    "arrowParens": "avoid"
+}

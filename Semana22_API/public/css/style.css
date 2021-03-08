@@ -1,0 +1,30 @@
+body {
+    background: #eee !important;
+    height: 100vh !important;
+}
+
+.createNewAccount {
+    margin: 0px auto;
+    width: 600px;
+    padding: 25px;
+    background: #aaa;
+    box-shadow: 2px 2px 12px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.createNewAccount form {
+    width: 500px;
+}
+
+.login .form-signin {
+    margin: 0px auto;
+    width: 500px;
+    padding: 25px;
+    background: #aaa;
+    box-shadow: 2px 2px 12px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.error {
+    border-color: red !important;
+}

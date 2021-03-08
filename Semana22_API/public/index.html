@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Growdev</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid">      
+        <div class="createUser">
+                <div class="createNewAccount">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <form class="form-signin" id="register">                    
+                            <h1 class="h3 mb-3 font-weight-normal">Criar conta</h1>
+                            <div class="alert alert-danger d-none">
+                                Preencha todos os campos corretamente.
+                            </div>
+                            <div class="alert alert-success d-none" role="alert">
+                                Cadastro efetuado com sucesso.
+                            </div>
+                            <input type="text" id="nome" class="form-control mb-3 p-3" name="name" placeholder="Nome" required>
+                            <input type="text" id="login" class="form-control mb-3 p-3" name="login" placeholder="Login" required>
+                            <input type="password" id="password" class="form-control mb-3 p-3" name="password" placeholder="Senha" required>
+                            <select class="form-contro custom-select mb-3" name="type">
+                                <option value="">Tipo</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Growdever">Growdever</option>
+                            </select>
+                            <input type="submit" class="btn btn-lg btn-primary btn-block p-3" value="Criar" id="btnCreateAccount">
+                        </form>
+                    </div>
+                    <div class="container">
+                        <a href="#" id="loginLink" class="stretched-link m-4 d-flex justify-content-center align-items-center">Já tem conta? Logar</a>                
+                    </div>
+                </div>               
+        </div>
+        <div class="login d-none">
+            <div class="d-flex h-100 justify-content-center align-items-center">
+                <form class="form-signin">
+                    <div class="alert alert-danger d-none loginAlert">
+                        Preencha todos os campos corretamente.
+                    </div>
+                    <div class="alert alert-danger d-none" id="alrt"></div>
+                    <div class="form-label-group">
+                        <input type="text" name="user" class="form-control mb-3 p-3" placeholder="Login"
+                            required autofocus>
+                    </div>
+                    <div class="form-label-group">
+                        <input type="password" name="loginPassword" class="form-control mb-3 p-3" placeholder="Senha"
+                            required>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block btnLogin p-3" type="submit">Entrar</button>
+
+                    <div class="container">
+                        <a href="#" id="registerLink" class="stretched-link m-4 d-flex justify-content-center align-items-center">Cadastrar novo usuário? Cadastro</a>                
+                    </div>
+                </form>                
+            </div>
+        </div>
+        <div class="page d-none">
+            <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+                <a class="navbar-brand col-sm-3 col-md-2 mr-0 pt-4 pb-4" href="#"></a>
+                <ul class="navbar-nav px-3">
+                  <li class="nav-item text-nowrap">
+                    <a class="nav-link logout" href="#">Sair</a>
+                  </li>
+                </ul>
+            </nav>
+            <div class="row">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link navAccount" href="#">Conta</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link navGrowdevers" href="#">Growdevers</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                    <div class="userAccount d-none">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                            <h1 class="h2">Detalhes</h1>
+                        </div>       
+                            
+                        <h2>Conta</h2>
+                        <div class="input-group mb-3 accountInputs">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">UID</span>
+                            </div>
+                            <input type="text" class="form-control" name="uid">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
+                            </div>
+                            <input type="text" class="form-control" name="name">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Tipo</span>
+                            </div>
+                            <input type="text" class="form-control" name="type">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                            </div>
+                            <input type="text" class="form-control" name="username">
+                        </div>
+                    </div>
+                    <div class="growdevers d-none">
+                        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                        <h1 class="h2">Lista</h1>
+                        </div>       
+                        
+                        <h2>Growdevers</h2>
+                        <div class="table-responsive ">
+                            <table class="table table-striped table-hover table-sm table-bordered listGrowdevers">
+                                <thead>
+                                <tr>
+                                    <th>UID</th>
+                                    <th>Nome</th>
+                                    <th>Tipo</th>
+                                    <th>Username</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    <script src="./bundle.js"></script>
+</body>
+</html>

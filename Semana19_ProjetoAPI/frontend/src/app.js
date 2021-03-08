@@ -3,7 +3,7 @@ import axios from 'axios';
 export default class App {
 
     constructor() {
-        this.baseUrl = 'http://localhost:3333/characters';
+        this.baseUrl = 'https://api-marvel-ortiz.herokuapp.com/characters';
     }
 
     async getCharacters(offset = 0) {
@@ -83,11 +83,21 @@ export default class App {
             description = 'Não informado'
         }
         
-        const details = `<img class="bd-placeholder-img float-left" width="400" height="400" src="${img}.${imgExtension}">
+        const details = `<img class="bd-placeholder-img float-left" data-id="${character.id}" width="400" height="400" src="${img}.${imgExtension}">
                             <p class="m-2">Nome: ${data.results[0].name}</p></br>
                             <p class="m-2">Descrição: ${description}</p>`;
 
         document.querySelector('.details').innerHTML = details;
+
+        /*
+        for (let card of document.getElementsByClassName('card')) {
+            card.addEventListener('click', (event) => {
+                const id = event.target.dataset.parentNode.id;
+
+                this.getCharacter(id);
+            });            
+        }
+        */
     }
 
     setPagination(totalItems, offset, name){
@@ -119,6 +129,8 @@ export default class App {
                 let item = document.querySelector(`[data-page="${i}"]`).parentElement;
                 item.classList.add("active");                
             }
+
+            // document.querySelector(`.page-link[data-page="${current_page}"]`).parentElement.classlist.add('active');
         }
     }
     
@@ -128,7 +140,33 @@ export default class App {
         image.addEventListener('click', (event) => {
             this.getInfoCharacter(id);
         });
-    }    
+    }
+
+    /* 
+        Função buscar personagem
+
+    getCharacter(id) {
+        let url = 
+
+        axios.get(url)
+            .then(response => {
+                response.data.data
+            })
+            .catch(error => console.log(error));
+    }
+     */
+
+   
+    
+    // setFilter() {
+    //     document.getElementsByName('search')[0].addEventListener('keyup', (event) => {
+    //         const title = event.target.value.trim().length >= 3
+
+    //         if (title.length >= 3) {
+    //             this.getCharactersByName(title);
+    //         }
+    //     });
+    // }
 }
 
 

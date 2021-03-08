@@ -1,0 +1,293 @@
+- yarn init -y
+- yarn add express
+- yarn add cors
+- yarn add dotenv
+- yarn add axios
+- yarn add nodemon -D
+- yarn add sucrase -D
+- Criar arquivo nodemon.json
+{
+  "execMap": {
+    "js": "node -r sucrase/register -r dotenv/config",
+  }
+}
+- alterar package.json
+"scripts": {
+    "dev": "nodemon src/index.js",
+	"build": "sucrase ./src -d ./dist --transforms imports",
+    "start": "node -r dotenv/config ./dist/index.js"
+ }
+ 
+- yarn add eslint -D
+- yarn eslint --init
+- Escolha a última opção
+- Escolha Javascript modules (import/export)
+- Escolha None of these
+- Digite N
+- Desmarque a opção Browser e selecione Node 
+- Escolha Use a popular style guide
+- Selecione Airbnb
+- Por fim, selecione Javascript
+- Escolher instalar com npm
+(Feito isso, foi gerado um arquivo .eslintrc.js)
+- apagar package-lock.json
+- No eslintrs.js:
+rules: {
+	'class-methods-use-this': 'off', // desativa uma regra que diz que todo método de uma classe precisa usar a palavra this
+	'no-param-reassign': 'off', // desativa uma regra que diz que não é permitido receber parâmetro e fazer alterações nele
+	camelcase: 'off', // desativa uma regra que diz que toda variável precisa ser escrita no formato camelCase
+	'no-unused-vars': ['error', { argsIgnorePattern: 'next' }], // não reclamar caso a variável utilizada seja next que é usada pelos middlewares do express
+}
+- instalar plugin https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+- ctrl + p e digite >json e selecione a opção Open Settings (JSON)
+"editor.codeActionsOnSave": {
+	"source.fixAll.eslint": true
+}
+
+
+- yarn add prettier -D
+- yarn add eslint-config-prettier -D 
+- yarn add eslint-plugin-prettier -D
+extends: ['airbnb-base', 'prettier'],
+plugins: ['prettier'],
+rules: {
+	'prettier/prettier': 'error',
+}
+- criar arquivo .prettierrc
+{
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "arrowParens": "avoid"
+}
+
+- instalar https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+- criar arquivo .editorconfig
+# EditorConfig is awesome: https://EditorConfig.org
+
+# top-most EditorConfig file
+- alterar indent_size para 2
+- alterar end_of_line para lf
+- alterar trim_trailing_whitespace para true
+- alterar insert_final_newline para true
+ 
+- criar diretório src
+- criar diretório src/app
+- criar diretório src/app/controllers
+class NomeController {
+  index(request, response) {
+    //
+  }
+
+  show(request, response) {
+    //
+  }
+
+  store(request, response) {
+    //
+  }
+
+  update(request, response) {
+    //
+  }
+
+  delete(request, response) {
+    //
+  }
+}
+
+export default new GrowdeverController();
+- criar diretório app/middlewares
+export default (request, response, next) => {
+  const { method, url } = request;
+  //
+  return next();
+};
+- criar diretório app/models
+- criar src/router.js
+import { Router } from "express";
+
+import NomeController from "./app/controllers/NomeController";
+import logRequestsMiddleware from "./app/middlewares/logRequests";
+
+const routes = new Router();
+
+routes.use(logRequestsMiddleware);
+
+routes.get("/growdevers", GrowdeverController.index);
+
+export default routes;
+- criar src/index.js
+import express from "express";
+import cors from 'cors';
+import routes from "./routes";
+
+const app = express();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
+app.use(routes);
+
+app.listen(8080);
+
+- yarn add sequelize
+- yarn add pg-hstore
+- yarn add pg
+- yarn add sequelize-cli
+- criar pasta migrations dentro de database
+- criar pasta seeds dentro de database
+- criar arquivo .sequelizerc na raiz
+require('dotenv').config(); 
+const { resolve } = require('path');
+
+module.exports = {
+  'config': resolve(__dirname, 'src', 'config', 'database.js'),
+  'models-path': resolve(__dirname, 'src', 'app', 'models'),
+  'migrations-path': resolve(__dirname, 'src', 'database', 'migrations'),
+  'seeders-path': resolve(__dirname, 'src', 'database', 'seeds'),
+};
+
+- yarn sequelize migration:create --name=create-users 
+- dentro da migration:
+module.exports = {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable(
+      'users',
+      {
+        id: {
+          type: Sequelize.DataTypes.INTEGER,
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+        },
+        name: {
+          type: Sequelize.DataTypes.STRING,
+          allowNull: false,
+        },
+		created_at: { type: Sequelize.DATE, allowNull: false },
+        updated_at: { type: Sequelize.DATE, allowNull: false },
+        teste: {
+          primaryKey: true,
+          autoIncrement: true,
+          type: Sequelize.DataTypes.STRING,
+          allowNull: false,
+          unique: true,
+          field: 'full_name' /* Forçar nome */,
+          defaultValue: new Date(),/* Sequelize.NOW */
+          references: { model: 'anotation', key: 'id' },
+        },
+      },
+      {
+        tableName: 'users',
+        schema: 'futebol',
+      }
+    );
+  },
+
+  down: async queryInterface => {
+    await queryInterface.dropTable('users');
+  },
+};
+
+- yarn sequelize db:migrate
+
+- yarn sequelize seed:generate --name users
+- dentro do seed:
+module.exports = {
+  up: async queryInterface => {
+    await queryInterface.bulkInsert(
+      {
+        tableName: 'users',
+        schema: 'futebol',
+      },
+      [
+        {
+          name: 'Fulano',
+          email: 'fulano@email.com',
+        },
+        {
+          name: 'Beltrano',
+          email: 'beltrabo@email.com',
+        },
+      ],
+      {}
+    );
+  },
+
+  down: async queryInterface => {
+    await queryInterface.bulkDelete(
+      {
+        tableName: 'users',
+        schema: 'futebol',
+      },
+      null,
+      {}
+    );
+  },
+};
+
+- yarn sequelize db:seed:all
+
+- criar arquivo User.js dentro de model
+import Sequelize, { Model } from 'sequelize';
+
+class User extends Model {
+  static init(sequelize) {
+    super.init(
+      {
+        id: {
+          allowNull: false,
+          type: Sequelize.INTEGER,
+          primaryKey: true,
+          autoIncrement: true,
+        },
+        name: {
+          allowNull: false,
+          type: Sequelize.STRING,
+        },
+        email: {
+          type: Sequelize.DataTypes.STRING,
+          allowNull: true,
+        },
+      },
+      {
+        sequelize,
+        schema: 'futebol',
+      }
+    );
+
+    return this;
+  }
+}
+
+export default User;
+
+
+- alterar index.js dentro de database
+import Sequelize from 'sequelize';
+import databaseConfig from '../config/database';
+
+import User from '../app/models/user';
+
+const models = [User];
+
+class Database {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    this.connection = new Sequelize(databaseConfig);
+
+    models
+      .map(model => model.init(this.connection))
+      .map(model => model.associate && model.associate(this.connection.models));
+  }
+}
+
+export default new Database();
+
+- pra usar:
+import User from '../models/User';
+
+await User.findAll();

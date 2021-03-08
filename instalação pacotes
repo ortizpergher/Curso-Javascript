@@ -41,9 +41,15 @@ yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
 
 yarn add axios
 
+yarn add dotenv
+
 # Executar
 yarn dev
 yarn watch
+
+git init
+git add -A
+
 
 
 

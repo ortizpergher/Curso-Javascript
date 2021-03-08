@@ -1,0 +1,21 @@
+# Install Package
+
+yarn add sequelize-cli
+
+
+yarn sequelize migration:create --name=create-users
+
+# EXECUTAR A migration
+yarn sequelize db:migrate
+
+# DROP LAST TABLE
+yarn sequelize db:migrate:undo
+
+# DROP ALL TABLES
+yarn sequelize db:migrate:undo
+
+# Create SEEDS
+yarn sequelize seed:generate --name=users
+
+# Run SEEDS
+yarn sequelize db:seed:all
